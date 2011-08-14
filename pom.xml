@@ -36,7 +36,9 @@
 				<artifactId>tomcat-maven-plugin</artifactId>
 				<version>1.1</version>
 				<configuration>
-					<server>tomcat</server>
+					<url>http://localhost:8080/manager</url>
+					<username>root</username>
+					<password>010047402</password>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -210,4 +212,5 @@
 			<scope>compile</scope>
 		</dependency>
 	</dependencies>
+
 </project>
