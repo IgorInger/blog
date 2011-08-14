@@ -1,0 +1,68 @@
+/* Layout */
+
+.container {
+	width: 950px;
+	margin: 0 auto;
+}
+
+
+.span-80, .span-20 {
+	float: left;
+	margiht-right: 10px;
+}
+
+.span-80 {
+	width: 760px;
+}
+
+.span-20 {
+	width: 190px;	
+}
+
+.last {
+	margin-right: 0;
+}
+
+p {
+	margin-bottom: 0.5em;
+}
+
+h2 {
+	margin-bottom: 0px;
+}
+
+h3 {
+	margin-top: 1em;
+}
+
+.entry {
+	margin-bottom: 1em;
+}
+
+/* Design */
+
+body {
+	font-size: 11pt;
+	font-family: "Palatino linotype", serif;
+	
+	background-color: #dddddd;	
+}
+
+input {
+	font-family: "Nina";
+}
+
+#content p {
+	text-indent: 1em;
+}
+
+#header {
+	font-family: sans-serif;
+}
+
+#footer {
+}
+
+.grey {
+	color: #999999;
+}

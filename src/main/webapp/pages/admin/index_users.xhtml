@@ -1,0 +1,32 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:i="http://igor-inger.de/jsf/html"
+	xmlns:h="http://java.sun.com/jsf/html" template="../template.xhtml">
+	<ui:define name="content">
+
+		<p><h:link outcome="pretty:adminIndex"
+			value="Редактировать записи" /></p>
+
+		<h3>Записи:</h3>
+
+		<h:form>
+			<h:dataTable var="user" value="#{userBean.users}">
+				<h:column>
+					<h:outputText value="##{user.id} #{user.name}" />
+				</h:column>
+				<h:column>
+					<h:outputText value="#{user.email}" />
+				</h:column>
+				<h:column>
+					<h:button outcome="pretty:editUser" value="Edit">
+						<f:param name="userID" value="#{user.id}" />
+					</h:button>
+				</h:column>
+			</h:dataTable>
+		</h:form>
+
+	</ui:define>
+</ui:composition>

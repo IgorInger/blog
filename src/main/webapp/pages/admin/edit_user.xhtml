@@ -1,0 +1,43 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:h="http://java.sun.com/jsf/html" template="../template.xhtml">
+	<ui:define name="content">
+
+		<p><h:link outcome="pretty:indexUsers"
+			value="Редактировать пользователей" /></p>
+
+		<h2>Edit user</h2>
+
+		<c:set var="user" value="#{userBean.user}" />
+
+		<table>
+			<tr>
+				<td>Name:</td>
+				<td>#{user.name}</td>
+			</tr>
+			<tr>
+				<td>Email:</td>
+				<td>#{user.email}</td>
+			</tr>
+			<tr>
+				<td>Openid:</td>
+				<td>#{user.openid}</td>
+			</tr>
+			<tr>
+				<td>Registered:</td>
+				<td>#{user.created}</td>
+			</tr>
+		</table>
+
+		<h:form>
+			<h:selectManyCheckbox value="#{userBean.test}" layout="pageDirection">
+				<f:selectItems value="#{userBean.availableRoles}" />
+			</h:selectManyCheckbox>
+			<h:commandButton action="#{userBean.saveUser}" value="Go" />
+		</h:form>
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,48 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:i="http://igor-inger.de/jsf/html"
+	xmlns:h="http://java.sun.com/jsf/html" template="template.xhtml">
+	<ui:define name="content">
+		<div class="span-80">
+		<div id="entries"><ui:repeat var="entry" value="#{entryBean.entriesPaged}">
+			<div class="entry"><a id="#{entry.id}"></a>
+			<h2><h:outputText value="#{entry.title}" /></h2>
+
+			<h:outputText value="#{entry.content}" escape="false">
+				<i:convertComposite converters="markdown, latex" />
+			</h:outputText>
+			<div class="grey"><span> <h:outputText
+				value="#{entry.created}">
+				<f:convertDateTime dateStyle="medium" />
+			</h:outputText> </span> <span> <h:link outcome="pretty:viewEntry"
+				value="#{entry.commentsCount} комментариев">
+				<f:param name="entryID" value="#{entry.id}" />
+			</h:link> </span> <span> <ui:repeat var="keyword" value="#{entry.keywords}">
+				<span> <h:link outcome="pretty:viewKeyword"
+					value="#{keyword.name}">
+					<f:param name="keywordName" value="#{keyword.name}" />
+				</h:link> </span>
+			</ui:repeat> </span></div>
+			</div>
+		</ui:repeat></div>
+		</div>
+		<div class="span-20 last">
+			<table>
+			<ui:repeat var="entry" value="#{entryBean.entriesPaged}">
+				<tr>					
+					<td style="font-size: 9pt;">
+						<a href="##{entry.id}">#{entry.title}</a>
+					</td>
+				</tr>
+			</ui:repeat>
+			</table>
+		</div>
+		<hr />
+		<i:paginator pages="#{entryBean.pagesCount}" page="#{entryBean.page}" />
+		<hr />
+	</ui:define>
+</ui:composition>

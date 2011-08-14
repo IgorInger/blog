@@ -1,0 +1,52 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html" template="template.xhtml">
+	<f:loadBundle basename="blog" var="blogresources"/>
+
+	<ui:define name="content">
+
+		<h2><h:outputText value="#{entryBean.entry.title}" /></h2>
+
+		<h:outputText value="#{entryBean.entry.markdownContent}" escape="false" />
+		
+		
+		<p class="grey">
+			<span>
+				<h:outputText value="#{entryBean.entry.created}">
+					<f:convertDateTime dateStyle="medium" />
+				</h:outputText>
+			</span>	
+			<span>
+			<ui:repeat var="keyword" value="#{entryBean.entry.keywords}">
+				<span>
+					<h:link value="#{keyword.name}" outcome="pretty:viewKeyword">
+						<f:param name="keywordName" value="#{keyword.name}"/>
+					</h:link>
+				</span>
+			</ui:repeat>			
+			</span>
+		</p>
+
+		<ui:repeat var="comment" value="#{entryBean.entry.comments}">
+			<p><h:outputText value="#{comment.author.name}" /></p>
+			<h:outputText value="#{comment.content}" />
+			<p class="grey">
+				<h:outputText value="#{comment.created}">
+					<f:convertDateTime dateStyle="medium"/>
+				</h:outputText>
+			</p>			
+			
+		</ui:repeat>
+		
+		<h3>#{blogresources.comment}</h3>
+		<h:form>
+			<h:outputLabel value="Текст" for="comment" />			
+			<h:inputTextarea value="#{commentBean.comment.content}" style="width: 100%" id="comment" rows="10" />
+			<h:commandButton action="#{commentBean.saveComment}" value="Save" />
+		</h:form>
+
+	</ui:define>
+</ui:composition>

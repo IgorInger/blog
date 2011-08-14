@@ -1,0 +1,46 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html" template="../template.xhtml">
+	<ui:define name="content">
+	
+		<p> <h:link outcome="pretty:adminIndex" value="Редактировать записи" /> </p>
+
+
+		<h2>Edit entry</h2>
+
+		<h:form>
+			<h:outputLabel value="Title" for="title" />
+			<h:inputText value="#{entryBean.entry.title}" id="title"
+				style="width: 100%" />
+			<h:inputTextarea value="#{entryBean.entry.content}"
+				style="width: 100%" rows="15" />
+				
+				<h:outputLabel value="Keywords" for="keywords" />
+				<h:inputText value="#{entryBean.unparsedKeywords}" style="width: 100%" id="keywords"/>
+				
+				
+				<h:selectBooleanCheckbox value="#{entryBean.entry.draft}" id="draft" />
+				<h:outputLabel value="Draft" for="draft" />
+
+			<div><h:outputText value="Created: #{entryBean.entry.created}" styleClass="grey" />
+			</div>
+
+			<h:commandButton value="Save" action="#{entryBean.save}" />
+			<h:commandButton value="Delete" action="#{entryBean.delete}" />
+
+			<h:dataTable var="comment" value="#{entryBean.entry.comments}"
+				binding="#{commentBean.commentsDataTable}">
+				<h:column>
+					<h:outputText value="#{comment.content}" />
+				</h:column>
+				<h:column>
+					<h:commandButton value="Delete" action="#{commentBean.delete}" />
+				</h:column>
+			</h:dataTable>
+		</h:form>
+
+	</ui:define>
+</ui:composition>

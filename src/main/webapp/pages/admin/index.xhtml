@@ -1,0 +1,36 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:i="http://igor-inger.de/jsf/html"
+	xmlns:h="http://java.sun.com/jsf/html" template="../template.xhtml">
+	<ui:define name="content">
+
+		<p><h:link outcome="pretty:indexUsers"
+			value="Редактировать пользователей" /></p>
+
+		<h3>Редактировать запись:</h3>
+
+
+		<h:dataTable var="entry" value="#{entryBean.entries}">
+			<h:column>
+				<h:outputText
+					value="##{entry.id} #{entry.title} (#{entry.commentsCount})" />
+			</h:column>
+			<h:column>
+				<h:outputText value="#{entry.created}">
+					<f:convertDateTime />
+				</h:outputText>
+			</h:column>
+			<h:column>
+				<h:button outcome="pretty:editEntry" value="Edit">
+					<f:param name="entryID" value="#{entry.id}" />
+				</h:button>
+			</h:column>
+		</h:dataTable>
+
+		<h:button outcome="pretty:createEntry" value="Create Entry" />
+
+	</ui:define>
+</ui:composition>

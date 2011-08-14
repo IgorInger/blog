@@ -1,0 +1,21 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html" template="../template.xhtml">
+	<ui:define name="content">
+		<div id="topstory">
+		<div class="info box">
+		<h2>Create entry</h2>
+		</div>
+		<h:form>
+			<h:outputLabel value="Title" for="title" />
+			<h:inputText value="#{entryBean.entry.title}" id="title"
+				style="width: 100%" />
+			<h:inputTextarea value="#{entryBean.entry.content}"
+				style="width: 100%" rows="15" />
+			<h:commandButton value="Save" action="#{entryBean.create}" />
+		</h:form></div>
+	</ui:define>
+</ui:composition>

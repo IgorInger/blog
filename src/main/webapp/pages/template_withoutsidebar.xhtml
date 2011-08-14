@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<f:view xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html" contentType="text/html">
+	<f:loadBundle var="messages"
+		basename="de.inger.blog.resources.messages" />
+	<html>
+	<head>
+	<!-- This website template was downloaded from http://www.nuviotemplates.com - visit us for more templates -->
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta http-equiv="content-language" content="en" />
+	<meta name="robots" content="all,follow" />
+
+	<meta name="author" lang="en"
+		content="All: Your website name [www.your-website.com]; e-mail: info@your-website.com" />
+	<meta name="copyright" lang="en"
+		content="webdesign: Vit Dlouhy [Nuvio - www.nuvio.cz; NuvioTemplates - www.nuviotemplates.com]; e-mail: hello@nuviotemplates.com" />
+
+	<meta name="description" content="..." />
+	<meta name="keywords" content="..." />
+
+
+	<link rel="stylesheet" media="screen,projection"
+		href="/blog/css/main.css" />
+	<!--[if lte IE 6]><link rel="stylesheet" media="screen,projection"
+		href="/blog/css/main-msio.css" /><![endif]-->
+	<link rel="stylesheet" media="screen,projection"
+		href="/blog/css/scheme.css" />
+	<link rel="stylesheet" media="print" href="/blog/css/print.css" />
+
+	<title>#{messages.title}</title>
+	</head>
+
+	<body>
+
+	<!-- Header -->
+	<div id="header" class="box">
+	<div class="main"><!-- Your logo -->
+	<h1 id="logo"><h:outputLink value="/blog">
+	Igor <span>Inger</span>
+	</h:outputLink></h1>
+	<hr class="noscreen" />
+
+	<!-- Hidden navigation -->
+	<p class="noscreen noprint"><em>Quick links: <a
+		href="#content">content</a>, <a href="#nav">navigation</a>, <a
+		href="#search">search</a>.</em></p>
+
+	<!-- Search -->
+	<fieldset id="search"><h:form>
+		<div><span class="noscreen">Fulltext:</span>
+		<div id="search-input"><h:inputText value="" size="30" /></div>
+		<input type="image" src="/blog/design/inp-search-submit.gif" value="Search"
+			name="" id="search-submit" /></div>
+	</h:form></fieldset>
+
+	</div>
+	<!-- /main --></div>
+	<!-- /header -->
+
+	<div class="main bg box"><!-- Navigation -->
+	<div id="nav" class="box">
+
+	<h3 class="noscreen">Navigation</h3>
+	<ul>
+		<li id="nav-active"><a href="#">Blog</a></li>
+		<!-- Active page (highlighted) -->
+		<li><a href="#">About me</a></li>
+		<li><a href="#">Archive</a></li>
+		<li><a href="#">Photography</a></li>
+		<li><a href="#">Portfolio</a></li>
+		<li><a href="#">Contact</a></li>
+	</ul>
+	<hr class="noscreen" />
+	</div>
+	<!-- /nav --> <!-- 2 columns (Content + Sidebar) -->
+	<div class="box"><!-- Content -->
+	<div id="content"><ui:insert name="content" /></div>
+	<!-- /content -->
+
+	<hr class="noscreen" />
+
+	<!-- Sidebar -->
+	<!-- /aside --></div>
+	<!-- /box -->
+
+	<hr class="noscreen" />
+
+	<!-- Footer -->
+	<div id="footer" class="box"><!-- Do you want remove this backlinks? Look at www.nuviotemplates.com/payment.php -->
+	<p class="f-right"><a href="http://www.nuviotemplates.com/">Free
+	web templates</a> presented by <a href="http://www.qartin.cz/">QARTIN</a>,
+	<a href="http://www.cssrevue.com/">CSS Gallery</a></p>
+	<!-- Do you want remove this backlinks? Look at www.nuviotemplates.com/payment.php -->
+
+	<p>&copy;&nbsp;2010 <a href="#">igor-inger.de</a></p>
+
+	</div>
+	<!-- /footer --></div>
+	<!-- /main -->
+
+	</body>
+	</html>
+</f:view>

@@ -1,0 +1,93 @@
+<pretty-config xmlns="http://ocpsoft.com/prettyfaces/3.1.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://ocpsoft.com/prettyfaces/3.1.0 
+	http://ocpsoft.com/xml/ns/prettyfaces/ocpsoft-pretty-faces-3.1.0.xsd">
+	
+	<rewrite match="^/pages/(.*)$" substitute="/pages/error/404.xhtml" redirect="chain" />
+
+	<url-mapping id="index">
+		<pattern value="/" />
+		<view-id> /pages/page.jsf </view-id>
+	</url-mapping>
+
+	<url-mapping id="registration">
+		<pattern value="/registration/" />
+		<view-id> /pages/registration.jsf </view-id>
+	</url-mapping>
+
+	<url-mapping id="authenticate">
+		<pattern value="/authenticate" />
+		<view-id> /pages/authenticate.jsf </view-id>
+		<action> #{openidBean.authenticate} </action>
+	</url-mapping>
+
+
+	<url-mapping id="indexUsers">
+		<pattern value="/admin/users/" />
+		<view-id> /pages/admin/index_users.jsf </view-id>
+	</url-mapping>
+	
+	<url-mapping id="editUser">
+		<pattern value="/admin/edit/user/#{userID : userBean.userID}" />
+		<view-id> /pages/admin/edit_user.jsf </view-id>
+		<action> #{userBean.loadUser} </action>
+	</url-mapping>
+	
+
+	<url-mapping id="login">
+		<pattern value="/login/" />
+		<view-id> /pages/login.jsf </view-id>
+	</url-mapping>
+
+
+	<url-mapping id="viewEntry">
+		<pattern value="/entry/#{entryID : entryBean.entryID}" />
+		<view-id> /pages/entry.jsf </view-id>
+		<action> #{entryBean.loadEntry} </action>
+	</url-mapping>
+
+	<url-mapping id="editEntry">
+		<pattern value="/admin/edit/entry/#{entryID : entryBean.entryID}" />
+		<view-id> /pages/admin/edit_entry.jsf </view-id>
+		<action> #{entryBean.loadEntry} </action>
+	</url-mapping>
+
+	<url-mapping id="createEntry">
+		<pattern value="/admin/create/entry/" />
+		<view-id> /pages/admin/create_entry.jsf </view-id>
+		<action> #{entryBean.clean} </action>
+	</url-mapping>
+
+	<url-mapping id="adminIndex">
+		<pattern value="/admin/" />
+		<view-id> /pages/admin/index.jsf </view-id>
+	</url-mapping>
+
+	<url-mapping id="debug">
+		<pattern value="/debug" />
+		<view-id> /pages/debug.jsf </view-id>
+	</url-mapping>
+
+	<url-mapping id="keywords">
+		<pattern value="/keywords/" />
+		<view-id> /pages/keywords.jsf </view-id>
+	</url-mapping>
+
+	<url-mapping id="viewKeyword">
+		<pattern value="/keyword/#{keywordName : keywordBean.keywordName}" />
+		<view-id> /pages/keyword.jsf </view-id>
+		<action> #{keywordBean.loadKeyword} </action>
+	</url-mapping>
+
+	<url-mapping id="page">
+		<pattern value="/page/#{page : entryBean.page}" />
+		<view-id> /pages/page.jsf </view-id>
+	</url-mapping>
+
+	<url-mapping id="rss">
+		<pattern value="/rss/" />
+		<view-id> /pages/rss.jsf </view-id>
+	</url-mapping>
+
+
+</pretty-config>

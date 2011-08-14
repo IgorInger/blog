@@ -1,0 +1,42 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html" template="template.xhtml">
+	<ui:define name="content">
+
+	<h2>Ключевое слово &laquo;#{keywordBean.keyword.name}&raquo;</h2>
+	
+		<ui:repeat var="entry" value="#{keywordBean.keyword.entries}">
+			<div class="entry">
+				<h3>#{entry.title}</h3>
+				<h:outputText value="#{entry.content}" escape="false">
+					<f:converter converterId="markdown" />
+				</h:outputText>
+				<p class="grey">
+					<span>
+						<h:outputText value="#{entryBean.entry.created}">
+							<f:convertDateTime dateStyle="medium" />
+						</h:outputText>					
+					</span>
+					<span>
+						<h:link outcome="pretty:viewEntry" value="#{entry.commentsCount} комментариев">
+							<f:param  name="entryID" value="#{entry.id}" />							
+						</h:link>
+					</span>
+					<span>
+						<ui:repeat var="keyword" value="#{entry.keywords}">
+						<span>
+							<h:link outcome="pretty:viewKeyword" value="#{keyword.name}">
+								<f:param name="keywordName" value="#{keyword.name}"/>
+							</h:link>
+						</span>
+						</ui:repeat>
+					</span>					
+				</p>				
+			</div>
+		</ui:repeat>		
+		
+	</ui:define>
+</ui:composition>

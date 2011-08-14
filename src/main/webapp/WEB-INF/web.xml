@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="WebApp_ID" version="2.5"
+ xmlns="http://java.sun.com/xml/ns/javaee"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+ <display-name>blog</display-name>
+ <context-param>
+  <param-name>javax.faces.FACELETS_LIBRARIES</param-name>
+  <param-value>/WEB-INF/inger.taglib.xml</param-value>
+ </context-param>
+ <filter>
+  <filter-name>pretty</filter-name>
+  <filter-class>com.ocpsoft.pretty.PrettyFilter</filter-class>
+ </filter>
+ <filter>
+  <filter-name>fileUpload</filter-name>
+  <filter-class>de.inger.blog.servlet.FileUploadFilter</filter-class>
+ </filter>
+ <filter>
+  <filter-name>security</filter-name>
+  <filter-class>de.inger.blog.security.SecurityFilter</filter-class>
+ </filter>
+ <filter-mapping>
+  <filter-name>pretty</filter-name>
+  <url-pattern>/*</url-pattern>
+  <dispatcher>REQUEST</dispatcher>
+  <dispatcher>FORWARD</dispatcher>
+  <dispatcher>ERROR</dispatcher>
+ </filter-mapping>
+ <filter-mapping>
+  <filter-name>security</filter-name>
+  <url-pattern>/*</url-pattern>
+  <dispatcher>INCLUDE</dispatcher>
+  <dispatcher>FORWARD</dispatcher>
+  <dispatcher>REQUEST</dispatcher>
+  <dispatcher>ERROR</dispatcher>
+ </filter-mapping>
+ <filter-mapping>
+  <filter-name>fileUpload</filter-name>
+  <url-pattern>/*</url-pattern>
+ </filter-mapping>
+ <listener>
+  <listener-class>org.apache.commons.fileupload.servlet.FileCleanerCleanup</listener-class>
+ </listener>
+ <servlet>
+  <servlet-name>Faces Servlet</servlet-name>
+  <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+  <load-on-startup>1</load-on-startup>
+ </servlet>
+ <servlet-mapping>
+  <servlet-name>Faces Servlet</servlet-name>
+  <url-pattern>*.jsf</url-pattern>
+ </servlet-mapping>
+ <welcome-file-list>
+  <welcome-file>index.xhtml</welcome-file>
+ </welcome-file-list>
+ <error-page>
+  <error-code>404</error-code>
+  <location>/pages/error/404.xhtml</location>
+ </error-page>
+</web-app>

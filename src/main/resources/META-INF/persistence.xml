@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<persistence xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+	version="2.0" xmlns="http://java.sun.com/xml/ns/persistence">
+	<persistence-unit name="blog-jpa" transaction-type="RESOURCE_LOCAL">
+		
+		
+		<class>de.inger.blog.model.Author</class>
+		<class>de.inger.blog.model.Comment</class>
+		<class>de.inger.blog.model.Entry</class>
+		<class>de.inger.blog.model.Group</class>
+		<class>de.inger.blog.model.User</class>
+				
+		<properties>
+			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost/blog" />
+			<property name="javax.persistence.jdbc.user" value="root" />
+			<property name="javax.persistence.jdbc.password" value="010047402" />
+
+			<!-- EclipseLink should create the database schema automatically -->
+			<property name="eclipselink.ddl-generation" value="drop-and-create-tables" />
+			<property name="eclipselink.ddl-generation.output-mode" value="sql-script" />
+			<property name="eclipselink.application-location" value="f:\" />
+		</properties>
+
+	</persistence-unit>
+
+	<persistence-unit name="blog">
+		<properties>
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect" />
+			<property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" />
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+			<property name="hibernate.connection.url" value="jdbc:mysql://localhost/blog" />
+			<property name="hibernate.connection.username" value="root" />
+			<property name="hibernate.connection.password" value="010047402" />
+			<property name="hibernate.show_sql" value="false" />
+		</properties>
+	</persistence-unit>
+
+	<persistence-unit name="blog-postgre">
+		<properties>
+			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
+			<property name="hibernate.connection.driver_class" value="org.postgresql.Driver" />
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+			<property name="hibernate.connection.url" value="jdbc:postgresql://localhost/blog" />
+			<property name="hibernate.connection.username" value="blog" />
+			<property name="hibernate.connection.password" value="010047402" />
+			<property name="hibernate.show_sql" value="false" />
+		</properties>
+	</persistence-unit>
+
+	
+</persistence>
