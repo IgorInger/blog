@@ -8,6 +8,8 @@
 	<artifactId>blog-webapp</artifactId>
 	<version>0.0.3-SNAPSHOT</version>
 	<packaging>war</packaging>
-	<name>Blog web application</name>
-
+	<name>Blog web application</name>	
+	<scm>
+        <developerConnection>${parent.scm.developerConnection}</developerConnection>
+    </scm>
 </project>
