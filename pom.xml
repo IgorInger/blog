@@ -107,7 +107,7 @@
 		<dependencies>
 			<dependency>
 				<groupId>de.inger.blog</groupId>
-				<artifactId>blog-webbappy</artifactId>
+				<artifactId>blog-webbapp</artifactId>
 				<version>${pom.version}</version>
 			</dependency>
 		</dependencies>
